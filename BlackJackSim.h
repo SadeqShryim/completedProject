@@ -19,5 +19,6 @@ private :
 public:
 	void simulator(int rounds = 100000);
 	void display() const;//Redue this idk what i was on when i wrote this shit 
+	bool isValidCard(int value);
 };
 #endif

@@ -3,10 +3,18 @@
 #include "deck.h"
 #include "cards.h"
 #include "BlackJack.h"
+#include "BlackJackSim.h"
 using namespace std;
 
 
 int main() {
+	cout << "Blackjack Strategy Simulator" << endl;
+	cout << "Simulating 100,000 random hands..." << endl << endl;
+
+	BlackJackSim simulator;
+	simulator.simulator();
+	simulator.display();
+	cout << "\nSimulation complete.\n";
 	//player test
 	/*Deck deck;
 	Player player(100);
@@ -36,20 +44,20 @@ int main() {
 
 	testGame.playerTurn();*/
 	//test day 9
-	Player player(100);
-	Player dealer(0);
+	//Player player(100);
+	//Player dealer(0);
 
-	BlackJack testGame(dealer, player);
+	//BlackJack testGame(dealer, player);
 
-	cout << "Welcome!!!" << endl;
+	//cout << "Welcome!!!" << endl;
 
-	do {
+	//do {
 
-		testGame.playRound();
-		cout << "your current balance is: $" << player.getBalance() << endl;
-	
-	} while (testGame.anotherRound());
+	//	testGame.playRound();
+	//	cout << "your current balance is: $" << player.getBalance() << endl;
+	//
+	//} while (testGame.anotherRound());
 
-	cout << "Thank you for playing. Youur final balance is: $" << player.getBalance() << endl;
+	//cout << "Thank you for playing. Youur final balance is: $" << player.getBalance() << endl;
 	return 0;
 }

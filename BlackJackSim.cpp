@@ -5,7 +5,7 @@
 #include <ctime> 
 #include <iostream>
 
-void BlackJackSim::simulator(int rounds = 100000) {
+void BlackJackSim::simulator(int rounds) {
 	srand(time(0));
 
 	for (int i = 0; i < rounds; ++i) {
@@ -57,7 +57,7 @@ void BlackJackSim::simulator(int rounds = 100000) {
 }
 
 //Helper function no need for it in the .h 
-bool isValidCard(int value) {
+bool BlackJackSim::isValidCard(int value) {
 	return value >= 4 and value <= 20;
 }
 
@@ -65,8 +65,17 @@ void BlackJackSim::display() const {
 	cout << "\nAfter Runnning the Simulation of 100 thousand hands the results are: " << endl;
 	cout << " Starting Value  |  Hit (W\\L\\D)  |  Stand (W\\L\\D)" << endl;
 	cout << "------------------------------------------------------" << endl;
+	for (int total = 4; total <= 20; ++total) {
+		auto hitIt = hitResults.find(total);
+		auto standIt = standResults.find(total);
 
-	//complete the for loop that runs from the vaild (4 - 20) cards to show if win loss and draw for hit and stand
+		if (hitIt != hitResults.end() || standIt != standResults.end()) {
+			const Stats& hit = hitIt != hitResults.end() ? hitIt->second : Stats{};
+			const Stats& stand = standIt != standResults.end() ? standIt->second : Stats{};
 
-
+			cout << "   " << total << "    |  "
+				<< hit.win << "-" << hit.loss << "-" << hit.draw << "       |  "
+				<< stand.win << "-" << stand.loss << "-" << stand.draw << "\n";
+		}
+	}
 }
